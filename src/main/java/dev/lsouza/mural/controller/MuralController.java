@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/mural")
 @AllArgsConstructor
@@ -29,7 +31,6 @@ public class MuralController {
     }
 
     @GetMapping("/{id}")
-    @Transactional
     public ResponseEntity<MuralExibicaoDTO> buscarPorId(@PathVariable Long id){
         var mural = muralService.obterPorId(id);
         return ResponseEntity.ok(mural);
@@ -43,8 +44,13 @@ public class MuralController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<Page<MuralExibicaoDTO>> listarTodos(@PageableDefault(size = 10) Pageable pageRequest){
-        var murais = muralService.listarTodos(pageRequest);
+    public ResponseEntity<Page<MuralExibicaoDTO>> listarTodos(@RequestParam String trecho,@PageableDefault(sort = "id") Pageable pageRequest ){
+        if(trecho != null && trecho.length() > 2){
+            var muraisFiltrados = muralService.listarPensamentosComFiltro(pageRequest,trecho);
+            return ResponseEntity.ok(muraisFiltrados);
+        }
+
+        var murais = muralService.listarPensamentos(pageRequest);
         return ResponseEntity.ok(murais);
     }
 
