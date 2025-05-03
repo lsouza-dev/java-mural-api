@@ -1,0 +1,2 @@
+ALTER TABLE pensamentos
+ADD COLUMN favorito BOOLEAN DEFAULT FALSE

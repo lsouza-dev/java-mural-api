@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>dev.lsouza</groupId>
-	<artifactId>mural</artifactId>
+	<artifactId>pensamento</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mural</name>
+	<name>pensamento</name>
 	<description>API para o Mural criado no curso de Angular na Alura</description>
 	<url/>
 	<licenses>

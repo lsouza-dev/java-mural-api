@@ -1,17 +1,17 @@
 package dev.lsouza.mural.models.dto;
 
 import dev.lsouza.mural.models.IValidacaoMural;
-import dev.lsouza.mural.models.MuralEnum;
-import dev.lsouza.mural.models.Mural;
+import dev.lsouza.mural.models.Pensamento;
 
-public record MuralExibicaoDTO(
+public record PensamentoExibicaoDTO(
         Long id,
         String conteudo,
         String autoria,
-        String modelo
+        String modelo,
+        boolean favorito
 ) implements IValidacaoMural {
-    public MuralExibicaoDTO(Mural m){
-        this(m.getId(),m.getConteudo(),m.getAutoria(),m.getModelo().toString().toLowerCase());
+    public PensamentoExibicaoDTO(Pensamento m){
+        this(m.getId(),m.getConteudo(),m.getAutoria(),m.getModelo().toString().toLowerCase(),m.isFavorito());
     }
 
     @Override

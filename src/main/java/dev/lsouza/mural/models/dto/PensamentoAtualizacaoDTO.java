@@ -1,13 +1,13 @@
 package dev.lsouza.mural.models.dto;
 
 import dev.lsouza.mural.models.IValidacaoMural;
-import dev.lsouza.mural.models.MuralEnum;
 
-public record MuralAtualizacaoDTO(
+public record PensamentoAtualizacaoDTO(
         Long id,
         String conteudo,
         String autoria,
-        String modelo
+        String modelo,
+        boolean favorito
 ) implements IValidacaoMural{
     @Override
     public String getConteudo() {
