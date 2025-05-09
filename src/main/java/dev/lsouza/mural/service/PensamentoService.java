@@ -72,6 +72,11 @@ public class PensamentoService {
         return repository.listarMuraisPaginados(pageable).map(PensamentoExibicaoDTO::new);
     }
 
+    public Page<PensamentoExibicaoDTO> listarPensamentosFavoritos(Pageable pageable){
+        return repository.listarPensamentosFavoritos(pageable).map(PensamentoExibicaoDTO::new);
+
+    }
+
     public PensamentoExibicaoDTO alterarFavorito(Long id) {
         var pensamento = obterPorId(id);
         pensamento.setFavorito(!pensamento.isFavorito());

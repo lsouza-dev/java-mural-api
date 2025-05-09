@@ -27,6 +27,13 @@ public interface PensamentoRepository extends JpaRepository<Pensamento,Long> {
         """, nativeQuery = true)
     Page<Pensamento> listarMuraisPaginadosEPorTrecho(Pageable pageable, @Param("trecho") String trecho);
 
+    @Query(value = """
+            SELECT *
+            FROM pensamentos p
+            WHERE p.favorito = true
+            """, nativeQuery = true)
+    Page<Pensamento> listarPensamentosFavoritos(Pageable pageable);
+
     @Modifying
     @Query(value = """
     UPDATE pensamentos

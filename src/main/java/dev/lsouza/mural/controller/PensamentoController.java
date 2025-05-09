@@ -53,6 +53,12 @@ public class PensamentoController {
         return ResponseEntity.ok(murais);
     }
 
+    @GetMapping("listar/favoritos")
+    public ResponseEntity<Page<PensamentoExibicaoDTO>> listarPensamentosFavoritos(Pageable pageable){
+        var pensamentos = pensamentoService.listarPensamentosFavoritos(pageable);
+        return ResponseEntity.ok(pensamentos);
+    }
+
     @PutMapping("/favoritar/{id}")
     @Transactional
     public ResponseEntity<PensamentoExibicaoDTO> atualizarFavorito(@PathVariable long id){
